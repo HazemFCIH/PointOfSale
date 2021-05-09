@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
 
 class UserController extends Controller
 {
@@ -69,8 +72,14 @@ return $query->where('first_name','like','%'.$request->search.'%')
             'permissions'=>'required',
 
         ]);
-        $request_data = $request->except('password','password_confirmation','permissions');
+        $request_data = $request->except('password','password_confirmation','permissions','image');
         $request_data['password'] = bcrypt($request->password);
+        if($request->image){
+            Image::make($request->image)->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('uploads/user_images/'.$request->image->hashName()));
+            $request_data['image'] = $request->image->hashName();
+        }
         $user = User::create($request_data);
         $user->attachRole('admin');
         // todo: remove create permissions and replace it with permissions seeder
@@ -155,6 +164,10 @@ return $query->where('first_name','like','%'.$request->search.'%')
      */
     public function destroy(User $user)
     {
+        if($user->image != 'default.png')
+        {
+            Storage::disk('public_uploads')->delete('/user_images/'.$user->image);
+        }
         $user->detachRoles([]);
         $user->detachPermissions([]);
         $user->delete();

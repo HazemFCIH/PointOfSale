@@ -23,7 +23,7 @@
                 </div>
                 <div class="box-body">
                     @include('partials._errors')
-                    <form action="{{route('dashboard.users.store')}}" method="post">
+                    <form action="{{route('dashboard.users.store')}}" method="post" enctype="multipart/form-data">
                         @method('POST')
                         @csrf
                         <div class="form-group">

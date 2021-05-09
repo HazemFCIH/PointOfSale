@@ -23,6 +23,8 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
+        'image',
+
     ];
 
     /**
@@ -40,6 +42,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $appends = ['image_path'];
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -48,5 +52,8 @@ class User extends Authenticatable
     }
     public function getLastNameAttribute($value){
         return ucfirst($value);
+    }
+    public function getImagePathAttribute(){
+        return asset('uploads/user_images/'.$this->image);
     }
 }

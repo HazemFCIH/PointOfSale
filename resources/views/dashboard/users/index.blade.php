@@ -45,7 +45,9 @@
                                 <th>@lang('site.first_name')</th>
                                 <th>@lang('site.last_name')</th>
                                 <th>@lang('site.email')</th>
+                                <th>@lang('site.image')</th>
                                 <th>@lang('site.action')</th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -55,6 +57,7 @@
                                 <td>{{$user->first_name}}</td>
                                 <td>{{$user->last_name}}</td>
                                 <td>{{$user->email}}</td>
+                                <td><img src="{{$user->image_path}}" width="70px" class="img-thumbnail" alt=""></td>
                                 <td>
                                     @if(!$user->hasRole('super_admin'))
                                     @permission('users-update')
