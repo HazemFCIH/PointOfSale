@@ -142,7 +142,7 @@ return [
         'first_name'            => 'الاسم الأول',
         'gender'                => 'النوع',
         'hour'                  => 'ساعة',
-        'last_name'             => 'اسم العائلة',
+        'last_name'             => 'اسم الاخير',
         'minute'                => 'دقيقة',
         'mobile'                => 'الجوال',
         'month'                 => 'الشهر',
