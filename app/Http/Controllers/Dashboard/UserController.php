@@ -20,7 +20,7 @@ class UserController extends Controller
         $this->middleware(['permission:users-delete'])->only('destroy');
     }
 
-    private $models = ['users','products','categories'];
+    private $models = ['users','products','categories','clients'];
 private $maps = ['create','read','update','delete'];
     /**
      * Display a listing of the resource.
@@ -33,7 +33,7 @@ private $maps = ['create','read','update','delete'];
             $users = User::whereRoleIs('admin')->when($request->search , function ($query) use ($request){
 return $query->where('first_name','like','%'.$request->search.'%')
     ->orWhere('last_name','like','%'.$request->search.'%');
-})->get();
+})->latest()->paginate(10);
 
         }else{
        $users = User::when($request->search , function ($query) use ($request){
@@ -70,6 +70,7 @@ return $query->where('first_name','like','%'.$request->search.'%')
             'email'=>'required|unique:users|max:256',
             'password'=>'required|confirmed|max:256',
             'permissions'=>'required',
+            'image'=>'image',
 
         ]);
         $request_data = $request->except('password','password_confirmation','permissions','image');
@@ -132,10 +133,22 @@ return $query->where('first_name','like','%'.$request->search.'%')
             'last_name'=>'required|max:100',
             'email'=>'required|unique:users,email,'.$user->id.'|max:256',
             'password'=>'required|confirmed|max:256',
+            'image'=>'image',
+
 
         ]);
-        $request_data = $request->except('password','password_confirmation','permissions');
+        $request_data = $request->except('password','password_confirmation','permissions','image');
         $request_data['password'] = bcrypt($request->password);
+        if($request->image){
+           if($user->image != 'default.png'){
+               Storage::disk('public_uploads')->delete('/user_images/'.$user->image);
+
+           }
+            Image::make($request->image)->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('uploads/user_images/'.$request->image->hashName()));
+            $request_data['image'] = $request->image->hashName();
+        }
 
         $user->update($request_data);
         // todo: remove create permissions and replace it with permissions seeder

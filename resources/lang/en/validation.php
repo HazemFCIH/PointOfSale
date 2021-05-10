@@ -181,6 +181,12 @@ return [
         'title'                 => 'title',
         'username'              => 'username',
         'year'                  => 'year',
+        'ar'                  => [
+            'name' => 'the name in english'
+        ],
+        'en'                  => [
+            'name' => 'the name in arabic'
+        ],
     ],
 
 ];

@@ -28,6 +28,15 @@ return [
     'categories' => 'categories',
     'confirm_delete' =>'are you sure you want to delete this item',
     'image' =>'image',
-
+    'remember_me' =>'remember me',
+    'login' =>'login',
+    'clients' =>'clients',
+    'name' =>'name',
+    'ar' =>[
+        'name' => 'the name in arabic',
+    ],
+    'en' =>[
+        'name' => 'the name in english',
+    ],
 
 ];

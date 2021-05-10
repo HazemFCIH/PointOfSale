@@ -40,7 +40,10 @@
                         </div>
                         <div class="form-group">
                             <label> @lang('site.image')</label>
-                            <input type="file" name="image" class="form-control" >
+                            <input type="file" name="image" class="form-control image-preview" >
+                        </div>
+                        <div class="form-group">
+                            <img src="{{asset('uploads/user_images/default.png')}}" style="width: 100px" class="img-thumbnail show-image">
                         </div>
                         <div class="form-group">
                             <label> @lang('site.password')</label>

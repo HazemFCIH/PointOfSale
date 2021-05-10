@@ -8,6 +8,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
 
             Route::get('/index', DashboardController::class . "@index")->name('index');
             Route::resource('users',UserController::class);
+            Route::resource('categories',CategoryController::class);
+
 
 
         });// end dashboard routes

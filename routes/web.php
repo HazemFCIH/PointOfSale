@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('dashboard.users.index');
+    return redirect()->route('dashboard.index');
 });
 
 Auth::routes(['register'=>false]);
 
-Route::get('/home', HomeController::class."@index")->name('home');
+Route::get('/home', function (){
+    return redirect()->route('dashboard.index');
+})->name('home');
