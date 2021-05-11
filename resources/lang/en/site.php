@@ -26,17 +26,30 @@ return [
     'permissions' => 'permissions',
     'products' => 'products',
     'categories' => 'categories',
+    'category' => 'category',
     'confirm_delete' =>'are you sure you want to delete this item',
     'image' =>'image',
     'remember_me' =>'remember me',
     'login' =>'login',
     'clients' =>'clients',
     'name' =>'name',
+    'description' =>'description',
+    'purchase-price' =>'purchase price',
+    'sale-price' =>'sale price',
+    'stock' =>'stock',
+    'profit' =>'profit',
+    'profit_percent' =>'profit percent',
+    'product_count' =>'products count',
+    'product_related' =>'products related',
+
     'ar' =>[
         'name' => 'the name in arabic',
+        'description' => 'the description in english',
+
     ],
     'en' =>[
         'name' => 'the name in english',
+        'description' => 'the description in english',
     ],
 
 ];

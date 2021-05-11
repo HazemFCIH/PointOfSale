@@ -25,17 +25,30 @@ return [
     'permissions' => 'الصلحيات',
     'products' => 'المنتاجات',
     'categories' => 'القوائم',
+    'category' => 'القسم',
     'confirm_delete' =>'هل انت متأكد من عملية الحذف',
     'image' =>'صورة',
     'remember_me' =>'تذكرنى',
     'login' =>'تسجيل الدخول ',
     'clients' =>'العملاء',
     'name' =>'الاسم',
+    'description' =>'الوصف',
+    'purchase-price' =>'سعر الشراء',
+    'sale-price' =>'سعر البيع',
+    'stock' =>'المخزون',
+    'profit' =>'الربح',
+    'profit_percent' =>'الربح بالنسبة المؤية',
+    'product_count' =>'عدد المنتاجات',
+    'product_related' =>'المنتاجات المرتبطة',
+
     'ar' =>[
         'name' => 'الاسم باللغة العربية',
+        'description' => 'الوصف باللغة العربية',
+
     ],
     'en' =>[
         'name' => 'الاسم باللغة الانجليزية',
+        'description' => 'الوصف باللغة الانجليزية',
     ],
 
 

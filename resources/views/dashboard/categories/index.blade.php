@@ -21,14 +21,17 @@
                     <form action="{{route('dashboard.categories.index')}}" method="get">
                         <div class="row">
                             <div class="col-md-4">
-                                <input type="text" name="search" class="form-control" placeholder="@lang('site.search')" value="{{request()->search}}">
+                                <input type="text" name="search" class="form-control" placeholder="@lang('site.search')"
+                                       value="{{request()->search}}">
                             </div>
 
 
                             <div class="col-md-4">
-                                <button type="submit" class="btn btn-primary "><i class="fa fa-search"></i>@lang('site.search')</button>
+                                <button type="submit" class="btn btn-primary "><i
+                                        class="fa fa-search"></i>@lang('site.search')</button>
                                 @permission('categories-create')
-                                <a href="{{route('dashboard.categories.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i>@lang('site.create')</a>
+                                <a href="{{route('dashboard.categories.create')}}" class="btn btn-primary"><i
+                                        class="fa fa-plus"></i>@lang('site.create')</a>
                                 @endpermission
 
                             </div>
@@ -43,8 +46,10 @@
                             <tr>
                                 <th>#</th>
                                 <th>@lang('site.name')</th>
+                                <th>@lang('site.product_count')</th>
+                                <th>@lang('site.product_related')</th>
 
-                                          <th>@lang('site.action')</th>
+                                <th>@lang('site.action')</th>
 
                             </tr>
                             </thead>
@@ -53,23 +58,28 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$category->name}}</td>
+                                    <td>{{$category->products->count()}}</td>
+                                    <td><a href="{{route('dashboard.products.index',['category_id'=>$category->id])}}" class="btn btn-info btn-sm"> @lang('site.product_related')</a></td>
 
                                     <td>
-                                            @permission('categories-update')
+                                        @permission('categories-update')
 
-                                            <a href="{{route('dashboard.categories.edit',$category->id)}}" class="btn btn-primary btn-sm" ><i class="fa fa-edit"></i>@lang('site.edit')</a>
+                                        <a href="{{route('dashboard.categories.edit',$category->id)}}"
+                                           class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>@lang('site.edit')
+                                        </a>
 
 
-                                            @endpermission
-                                            @permission('categories-delete')
+                                        @endpermission
+                                        @permission('categories-delete')
 
-                                            <form action="{{route('dashboard.categories.destroy',$category->id)}}" method="post" style="display: inline-block">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger delete btn-sm" ><i class="fa fa-trash"></i>@lang('site.delete')</button>
-                                            </form>
-                                            @endpermission
-
+                                        <form action="{{route('dashboard.categories.destroy',$category->id)}}"
+                                              method="post" style="display: inline-block">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger delete btn-sm"><i
+                                                    class="fa fa-trash"></i>@lang('site.delete')</button>
+                                        </form>
+                                        @endpermission
 
 
                                     </td>

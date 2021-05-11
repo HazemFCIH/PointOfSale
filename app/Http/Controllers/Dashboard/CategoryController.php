@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:categories-create'])->only('create');
+        $this->middleware(['permission:categories-read'])->only('index');
+        $this->middleware(['permission:categories-update'])->only('edit');
+        $this->middleware(['permission:categories-delete'])->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +23,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $categories = Category::when($request->search , function ($q) use ($request){
-            return $q->where('name','like','%'.$request->search.'%');
+            return $q->whereTranslationLike('name','%'.$request->search.'%');
         })->latest()->paginate(5);
         return view('dashboard.categories.index',compact('categories'));
     }

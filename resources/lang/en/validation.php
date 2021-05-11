@@ -181,11 +181,17 @@ return [
         'title'                 => 'title',
         'username'              => 'username',
         'year'                  => 'year',
+        'category_id'                  => 'category',
+        'purchase_price'                  => 'purchase price',
+        'sale_price'                  => 'sale price',
+        'stock'                  => 'stock',
         'ar'                  => [
-            'name' => 'the name in english'
+            'name' => 'the name in english',
+            'description' => 'the description in english',
         ],
         'en'                  => [
-            'name' => 'the name in arabic'
+            'name' => 'the name in arabic',
+            'description' => 'the description in arabic',
         ],
     ],
 
