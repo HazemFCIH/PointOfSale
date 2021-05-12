@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
@@ -36,7 +37,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         return view('dashboard.products.create',compact('categories'));
-    }
+    } // end of create function
 
 
     public function store(Request $request)
@@ -65,7 +66,7 @@ class ProductController extends Controller
         return redirect()->route('dashboard.products.index');
 
 
-    }
+    }// end of store function
 
 
     public function show(Product $product)
@@ -76,18 +77,48 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        //
-    }
+        $categories = Category::all();
+        return view('dashboard.products.edit',compact('categories','product'));
+    }// end of edit function
 
 
     public function update(Request $request, Product $product)
     {
-        //
-    }
+        $rules = [
+            'category_id' => 'required',
+            'purchase_price' => 'required',
+            'sale_price' => 'required',
+            'stock' => 'required',
+        ];
+        foreach (config('translatable.locales') as $locale){
+
+            $rules += [$locale.'.name' => 'required|unique:product_translations,name,'.$product->id.',product_id'];
+            $rules += [$locale.'.description' => 'required'];
+        }
+        $request->validate($rules);
+        $request_data = $request->all();
+        if($request->image){
+            if($product->image != 'productDefault.png'){
+                Storage::disk('public_uploads')->delete('/product_images/'.$product->image);
+
+            }
+            Image::make($request->image)->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('uploads/product_images/'.$request->image->hashName()));
+            $request_data['image'] = $request->image->hashName();
+        }
+        $product->update($request_data);
+        session()->flash('success',__('site.edited_successfully'));
+        return redirect()->route('dashboard.products.index');
+
+    }// end of update function
 
 
     public function destroy(Product $product)
     {
-        //
-    }
+        $product->delete();
+        session()->flash('success',__('site.deleted_successfully'));
+        return redirect()->route('dashboard.products.index');
+
+    } //end of delete function
 }

@@ -3,14 +3,14 @@
     <div class="content-wrapper">
 
         <section class="content-header">
-            <h1>@lang('site.users')</h1>
+            <h1>@lang('site.products')</h1>
             <ol class="breadcrumb">
 
                 <li><a href="{{route('dashboard.index')}}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a>
                 </li>
 
-                <li><a href="{{route('dashboard.users.index')}}"><i class="fa fa-user"></i> @lang('site.users') </a>  </li>
-                <li class="active"><i class="fa fa-user"></i> @lang('site.edit') </li>
+                <li><a href="{{route('dashboard.products.index')}}"><i class="fa fa-product"></i> @lang('site.products') </a>  </li>
+                <li class="active"><i class="fa fa-product"></i> @lang('site.edit') </li>
             </ol>
         </section>
         <section class="content">
@@ -18,78 +18,58 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">
-                        @lang('site.users')
+                        @lang('site.products')
                     </h3>
                 </div>
                 <div class="box-body">
                     @include('partials._errors')
-                    <form action="{{route('dashboard.users.update',$user->id)}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('dashboard.products.update',$product->id)}}" method="post" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
+
+                        @foreach(config('translatable.locales') as $locale)
+                            <div class="form-group">
+                                <label> @lang('site.'.$locale.'.name')</label>
+                                <input type="text" name="{{$locale}}[name]" class="form-control" value="{{$product->translate($locale)->name}}">
+                            </div>
+                        @endforeach
+                        @foreach(config('translatable.locales') as $locale)
+                            <div class="form-group">
+                                <label> @lang('site.'.$locale.'.description')</label>
+                                <textarea  name="{{$locale}}[description]" class="form-control ckeditor" >{{$product->translate($locale)->description}}</textarea>
+                            </div>
+                        @endforeach
                         <div class="form-group">
-                            <label> @lang('site.first_name')</label>
-                            <input type="text" name="first_name" class="form-control" value="{{$user->first_name}}">
+                            <label> @lang('site.categories')</label>
+                            <select name="category_id" class="form-control">
+                                <option value="">--@lang('site.categories')</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}" {{$product->category_id == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label> @lang('site.last_name')</label>
-                            <input type="text" name="last_name" class="form-control" value="{{$user->last_name}}">
+                            <label> @lang('site.purchase-price')</label>
+                            <input type="number" name="purchase_price" class="form-control" value="{{$product->purchase_price}}">
                         </div>
                         <div class="form-group">
-                            <label> @lang('site.email')</label>
-                            <input type="email" name="email" class="form-control" value="{{$user->email}}">
+                            <label> @lang('site.sale-price')</label>
+                            <input type="number" name="sale_price" class="form-control" value="{{$product->sale_price}}">
+                        </div>
+                        <div class="form-group">
+                            <label> @lang('site.stock')</label>
+                            <input type="number" name="stock" class="form-control" value="{{$product->stock}}">
                         </div>
                         <div class="form-group">
                             <label> @lang('site.image')</label>
                             <input type="file" name="image" class="form-control image-preview" >
                         </div>
                         <div class="form-group">
-                            <img src="{{$user->image_path}}" style="width: 100px" class="img-thumbnail show-image">
-                        </div>
-                        <div class="form-group">
-                            <label> @lang('site.password')</label>
-                            <input type="password" name="password" class="form-control" >
+                            <img src="{{$product->image_path}}" style="width: 100px" class="img-thumbnail show-image">
                         </div>
 
-                        <div class="form-group">
-                            <label> @lang('site.password_confirmation')</label>
-                            <input type="password" name="password_confirmation" class="form-control" >
-                        </div>
-
-                        <div class="form-group">
-                            <label>@lang('site.permissions')</label>
-
-                            <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
-                                @foreach($models as $model)
-                                    <li class="nav-item">
-                                        <a class="nav-link {{$loop->first ? 'active' : ''}}" id="tab1" data-toggle="pill" href="#{{$model}}" role="tab" aria-controls="custom-content-below-home" aria-selected="true">
-
-                                            @lang('site.'.$model)</a>
-                                    </li>
-                                @endforeach
-
-
-                            </ul>
-                            <div class="tab-content" id="custom-content-below-tabContent">
-                                @foreach($models as $model)
-
-                                    <div class="tab-pane {{$loop->first ? 'active' : ''}}" id="{{$model}}" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
-                                        @foreach($maps as $map)
-                                            <label for="">
-                                                <input type="checkbox" name="permissions[]" {{$user->isAbleTo($model.'-'.$map) ? 'checked ' : ' '}} value="{{$model}}-{{$map}}" id="">
-                                                @lang('site.'.$map)
-                                            </label>
-                                        @endforeach
-
-                                    </div>
-                                @endforeach
-
-
-
-                            </div>
-
-                        </div>
                         <div class="form_group">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-edit"></i>@lang('site.edit')</button>
+                            <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>@lang('site.create')</button>
                         </div>
                     </form>
                 </div>
