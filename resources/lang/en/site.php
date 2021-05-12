@@ -41,6 +41,10 @@ return [
     'profit_percent' =>'profit percent',
     'product_count' =>'products count',
     'product_related' =>'products related',
+    'client' =>'client',
+    'phone' =>'phone',
+    'address' =>'address',
+
 
     'ar' =>[
         'name' => 'the name in arabic',

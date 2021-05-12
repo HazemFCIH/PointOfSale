@@ -185,6 +185,8 @@ return [
         'purchase_price'                  => 'purchase price',
         'sale_price'                  => 'sale price',
         'stock'                  => 'stock',
+        'phone.0'                  => 'first phone required',
+
         'ar'                  => [
             'name' => 'the name in english',
             'description' => 'the description in english',

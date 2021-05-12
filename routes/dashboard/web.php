@@ -10,6 +10,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
             Route::resource('users',UserController::class);
             Route::resource('categories',CategoryController::class);
             Route::resource('products',ProductController::class);
+            Route::resource('clients',ClientController::class);
 
 
 

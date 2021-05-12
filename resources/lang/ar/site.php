@@ -40,6 +40,9 @@ return [
     'profit_percent' =>'الربح بالنسبة المؤية',
     'product_count' =>'عدد المنتاجات',
     'product_related' =>'المنتاجات المرتبطة',
+    'client' =>'العميل',
+    'phone' =>'الهاتف',
+    'address' =>'العنوان',
 
     'ar' =>[
         'name' => 'الاسم باللغة العربية',
