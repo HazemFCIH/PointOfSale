@@ -3,6 +3,7 @@
 return [
     'dashboard'=> 'dashboard',
     'no_data_found'=> 'Sorry there is no data to show',
+    'no_records'=> 'Sorry there is no data to show',
     'yes'=> 'yes',
     'no'=> 'no',
     'logout' =>'logout',
@@ -25,6 +26,8 @@ return [
     'action' => 'actions',
     'permissions' => 'permissions',
     'products' => 'products',
+    'product' => 'product',
+
     'categories' => 'categories',
     'category' => 'category',
     'confirm_delete' =>'are you sure you want to delete this item',
@@ -37,6 +40,8 @@ return [
     'purchase-price' =>'purchase price',
     'sale-price' =>'sale price',
     'stock' =>'stock',
+    'price' =>'price',
+    'quantity' =>'quantity',
     'profit' =>'profit',
     'profit_percent' =>'profit percent',
     'product_count' =>'products count',
@@ -44,6 +49,21 @@ return [
     'client' =>'client',
     'phone' =>'phone',
     'address' =>'address',
+    'orders' =>'orders',
+    'order' =>'order',
+    'order_add' =>'add order',
+    'order_edit' =>'order edit',
+    'client_name' =>'client name',
+    'order_status' =>'order status',
+    'created_at' =>'created at',
+    'show_products' =>'show products',
+    'loading' =>'loading',
+    'print' =>'print',
+    'status' =>'status',
+    'total' =>'total',
+    'product_quantity_error' =>'the quantity required for this product is larger than the stock of this product',
+
+
 
 
     'ar' =>[

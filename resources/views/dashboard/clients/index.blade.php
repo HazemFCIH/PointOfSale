@@ -46,6 +46,7 @@
                                 <th>@lang('site.name')</th>
                                 <th>@lang('site.phone')</th>
                                 <th>@lang('site.address')</th>
+                                <th>@lang('site.order_add')</th>
                                      <th>@lang('site.action')</th>
 
                             </tr>
@@ -60,6 +61,12 @@
                                        <li> {{$phone}}</li>
                                     @endforeach</ul></td>
                                 <td>{{$client->address}}</td>
+
+                                <td>
+                                    @permission('orders-create')
+                                    <a href="{{route('dashboard.clients.orders.create',$client->id)}}" class="btn btn-primary btn-sm">@lang('site.order_add')</a>
+                                    @endpermission
+                                </td>
 
                                 <td>
                                     @permission('clients-update')

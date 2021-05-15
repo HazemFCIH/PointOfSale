@@ -26,6 +26,9 @@
             @if(auth()->user()->isAbleTo('clients-read'))
                 <li><a href="{{ route('dashboard.clients.index') }}"><i class="fa fa-th"></i><span>@lang('site.clients')</span></a></li>
             @endif
+            @if(auth()->user()->isAbleTo('orders-read'))
+                <li><a href="{{ route('dashboard.orders.index') }}"><i class="fa fa-th"></i><span>@lang('site.orders')</span></a></li>
+            @endif
                 {{--
                         @if (auth()->user()->hasPermission('read_categories'))
                             <li><a href="{{ route('dashboard.categories.index') }}"><i class="fa fa-th"></i><span>@lang('site.categories')</span></a></li>

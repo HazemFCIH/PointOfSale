@@ -3,6 +3,8 @@
 return [
     'dashboard' => 'الرئيسية',
     'no_data_found' => 'لا يوجد بيانات للعرض',
+    'no_records'=> 'لا يوجد بيانات للعرض',
+
     'yes' => 'نعم',
     'no' => 'لا',
     'logout' =>'تسجيل الخروج',
@@ -24,6 +26,7 @@ return [
     'action' => 'الاوامر',
     'permissions' => 'الصلحيات',
     'products' => 'المنتاجات',
+    'product' => 'المنتج',
     'categories' => 'القوائم',
     'category' => 'القسم',
     'confirm_delete' =>'هل انت متأكد من عملية الحذف',
@@ -36,6 +39,10 @@ return [
     'purchase-price' =>'سعر الشراء',
     'sale-price' =>'سعر البيع',
     'stock' =>'المخزون',
+    'price' =>'السعر',
+    'quantity' =>'الكمية',
+    'total' =>'المجموع',
+
     'profit' =>'الربح',
     'profit_percent' =>'الربح بالنسبة المؤية',
     'product_count' =>'عدد المنتاجات',
@@ -43,6 +50,19 @@ return [
     'client' =>'العميل',
     'phone' =>'الهاتف',
     'address' =>'العنوان',
+    'orders' =>'الطلبات',
+    'order' =>'الطلبات',
+    'order_add' =>'اضف طلب',
+    'order_edit' =>'تعديل طلب',
+    'client_name' =>'اسم العميل',
+    'order_status' =>'حالة الطلب',
+    'created_at' =>'وقت الاضافة',
+    'loading' =>'تحميل',
+    'print' =>'طباعة',
+    'status' =>'الحالة',
+    'show_products' =>'اظهار المنتاجات',
+    'product_quantity_error' =>'الكمية المطلوبة اكبر من المخزرون لهذا المنتج',
+
 
     'ar' =>[
         'name' => 'الاسم باللغة العربية',

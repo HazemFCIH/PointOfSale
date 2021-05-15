@@ -28,7 +28,7 @@ class ProductController extends Controller
             return $q->where('category_id',$request->category_id);
         })->
         latest()->
-        paginate(5);
+        paginate(10);
         return view('dashboard.products.index',compact('products','categories'));
     }// end of index
 

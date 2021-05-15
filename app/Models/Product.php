@@ -31,4 +31,7 @@ class Product extends Model
         $profit_percent = $this->profit * 100 / $this->purchase_price;
         return number_format($profit_percent,2);
     }// end of Profit percent attribute
+    public function orders(){
+        return $this->belongsToMany(Order::class,'product_order');
+    }
 }

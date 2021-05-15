@@ -29,7 +29,7 @@
                         @foreach(config('translatable.locales') as $locale)
                             <div class="form-group">
                                 <label> @lang('site.'.$locale.'.name')</label>
-                                <input type="text" name="{{$locale}}[name]" class="form-control" value="{{$category->translate($locale)->name}}">
+                                <input type="text" name="{{$locale}}[name]" class="form-control" value="{{$category->translate($locale)->name ?? ''}}">
                             </div>
                         @endforeach
                         <div class="form_group">

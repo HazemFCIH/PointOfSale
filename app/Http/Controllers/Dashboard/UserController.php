@@ -20,7 +20,7 @@ class UserController extends Controller
         $this->middleware(['permission:users-delete'])->only('destroy');
     }
 
-    private $models = ['users','products','categories','clients'];
+    private $models = ['users','products','categories','clients','orders'];
 private $maps = ['create','read','update','delete'];
     /**
      * Display a listing of the resource.

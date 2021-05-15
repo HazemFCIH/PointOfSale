@@ -24,7 +24,7 @@ class CategoryController extends Controller
     {
         $categories = Category::when($request->search , function ($q) use ($request){
             return $q->whereTranslationLike('name','%'.$request->search.'%');
-        })->latest()->paginate(5);
+        })->latest()->paginate(10);
         return view('dashboard.categories.index',compact('categories'));
     }
 

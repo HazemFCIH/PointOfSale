@@ -6,11 +6,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     function () {
         Route::prefix('dashboard')->middleware('auth')->name('dashboard.')->group(function () {
 
-            Route::get('/index', DashboardController::class . "@index")->name('index');
+            Route::get('/home', DashboardController::class . "@index")->name('index');
             Route::resource('users',UserController::class);
             Route::resource('categories',CategoryController::class);
             Route::resource('products',ProductController::class);
             Route::resource('clients',ClientController::class);
+            Route::resource('clients.orders',Client\OrderController::class);
+            Route::resource('orders',OrderController::class);
 
 
 
