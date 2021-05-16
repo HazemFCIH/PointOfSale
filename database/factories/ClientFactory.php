@@ -21,10 +21,12 @@ class ClientFactory extends Factory
      */
     public function definition()
     {
+        $fakerAr= \Faker\Factory::create('ar_SA');
+
         return [
-            'name'=> $this->faker->name,
-            'phone'=> [$this->faker->phoneNumber],
-            'address'=> $this->faker->address,
+            'name'=> $fakerAr->name,
+            'phone'=> [$fakerAr->phoneNumber],
+            'address'=> $fakerAr->address,
         ];
     }
 }

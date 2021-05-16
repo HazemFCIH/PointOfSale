@@ -10,7 +10,7 @@
                 </li>
                 <li><a href="{{route('dashboard.clients.index')}}"><i class="fa fa-client"></i> @lang('site.clients')
                     </a></li>
-                <li class="active"><i class="fa fa-client"></i> @lang('site.order_add') </li>
+                <li class="active"><i class="fa fa-client"></i> @lang('site.order_edit') </li>
             </ol>
         </section>
         <section class="content">
@@ -105,7 +105,7 @@
                                         <tr>
                                             <td>{{$product->name}}</td>
                                             <td><input type="number" name="products[{{$product->id}}][quantity]"
-                                                       data-price="{{$product->sale_price}}"
+                                                       data-price="{{number_format($product->sale_price, 2)}}"
                                                        class="form-control input-sm product-quantity" min="1" value="{{$product->pivot->quantity}}">
                                             </td>
                                             <td class="product-price">{{number_format($product->sale_price * $product->pivot->quantity,2)}}</td>
@@ -114,6 +114,7 @@
                                                         data-id="{{$product->id}}"><span class="fa fa-trash"></span></button>
                                             </td>
                                         </tr>
+
                                     @endforeach
 
                                     </tbody>

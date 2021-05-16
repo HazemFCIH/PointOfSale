@@ -19,6 +19,7 @@ return [
     'delete' => 'حذف',
     'create' => 'اضف',
     'search' => 'بحث',
+    'show' => 'عرض',
     'users' => 'المشرفين',
     'first_name' => 'الاسم الاول',
     'last_name' => 'الاسم الثاني',

@@ -32,10 +32,7 @@
                                     <div class="col-md-4">
                                         <button type="submit" class="btn btn-primary "><i
                                                 class="fa fa-search"></i>@lang('site.search')</button>
-                                        @permission('orders-create')
-                                        <a href="{{route('dashboard.orders.create')}}" class="btn btn-primary"><i
-                                                class="fa fa-plus"></i>@lang('site.create')</a>
-                                        @endpermission
+
 
                                     </div>
                                 </div>
@@ -66,10 +63,9 @@
                                             <td>{{number_format($order->total_price)}}</td>
                                             <td>@lang('site.status')</td>
                                             <td>
-                                                <button class="btn btn-primary btn-sm order-products"
+                                                <button class="btn btn-warning btn-sm order-products"
                                                         data-url="{{route('dashboard.orders.show',$order->id)}}"
-                                                        data-method="get"><i
-                                                        class="fa fa-list"></i>@lang('site.show_products')
+                                                        data-method="get">@lang('site.show')
                                                 </button>
 
                                             </td>

@@ -64,7 +64,7 @@
 
                                 <td>
                                     @permission('orders-create')
-                                    <a href="{{route('dashboard.clients.orders.create',$client->id)}}" class="btn btn-primary btn-sm">@lang('site.order_add')</a>
+                                    <a href="{{route('dashboard.clients.orders.create',$client->id)}}" class="btn btn-warning btn-sm">@lang('site.order_add')</a>
                                     @endpermission
                                 </td>
 

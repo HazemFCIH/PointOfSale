@@ -17,6 +17,7 @@ return [
     'delete' => 'delete',
     'create' => 'create',
     'read' => 'read',
+    'show' => 'show',
     'update' => 'update',
     'search' => 'search',
     'users' => 'users',
